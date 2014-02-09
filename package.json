@@ -1,0 +1,17 @@
+{
+    "name": "parker",
+    "description": "",
+    "version": "0.0.0",
+    "main": "parker.js",
+    "devDependencies": {
+        "chai": "*",
+        "mocha": "*",
+        "underscore": "*",
+        "backbone": "*",
+        "cli-color": "*",
+        "minimist": "0.0.7"
+    },
+    "scripts": {
+        "test": "mocha --no-colors --reporter spec"
+    }
+}
