@@ -1,9 +1,9 @@
 {
     "name": "parker",
-    "description": "",
+    "description": "A stylesheet analysis tool",
     "version": "0.0.0",
     "main": "parker.js",
-    "devDependencies": {
+    "dependencies": {
         "chai": "*",
         "mocha": "*",
         "underscore": "*",
