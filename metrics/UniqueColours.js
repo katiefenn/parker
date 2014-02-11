@@ -10,7 +10,9 @@ module.exports = {
     type: 'value',
     aggregate: 'list',
     measure: function (value) {
-        return getColourHexes(value);
+        return getColourHexes(value).map(function (colourHex) {
+            return getLongHashForm(colourHex).toUpperCase();
+        });
     },
     filter: function (value, index, self) {
         return self.indexOf(value) === index;
@@ -25,4 +27,15 @@ var getColourHexes = function (value) {
     }
 
     return colourHexes;
+};
+
+var getLongHashForm = function (string) {
+    if (string.length === 4) {
+        var r = string.substring(0, 1),
+            g = string.substring(1, 2),
+            b = string.substring(2);
+        return r + r + g + g + b + b;
+    }
+
+    return string;
 };
