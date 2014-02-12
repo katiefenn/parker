@@ -31,9 +31,9 @@ var getColourHexes = function (value) {
 
 var getLongHashForm = function (string) {
     if (string.length === 4) {
-        var r = string.substring(0, 1),
-            g = string.substring(1, 2),
-            b = string.substring(2);
+        var r = string.substring(1, 2),
+            g = string.substring(2, 3),
+            b = string.substring(3);
         return r + r + g + g + b + b;
     }
 
