@@ -10,7 +10,7 @@ module.exports = {
     type: 'selector',
     aggregate: 'mean',
     measure: function (selector) {
-        var identifiers = selector.split(/[\s>\.]|:{1,2}|\[/g);
+        var identifiers = getIdentifiers(selector);
 
         if (identifiers.length === 1 && identifiers[0] === '') {
             return 0;
@@ -18,4 +18,15 @@ module.exports = {
 
         return identifiers.length;
     }
+};
+
+var getIdentifiers = function (selector) {
+    var identifiers = [],
+        segments = selector.split(/\s+[\s\+>]\s?|~^=/g);
+
+    _.each(segments, function (segment) {
+        identifiers = identifiers.concat(segment.match(/[#\.:]?[\w\-\*]+|\[[\w=\-~'"\|]+\]|:{2}[\w-]+/g));
+    });
+
+    return identifiers;
 };
