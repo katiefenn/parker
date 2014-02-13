@@ -28,9 +28,14 @@ if(argv.f) {
 else {
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
+    var stdinData = '';
 
     process.stdin.on('data', function(chunk) {
-        var results = parker.run(chunk);
+        stdinData += chunk;
+    });
+
+    process.stdin.on('end', function() {
+        var results = parker.run(stdinData);
         _.each(metrics, function(metric) {
             console.log(metric.name + ': ' + results[metric.id]);
         });
