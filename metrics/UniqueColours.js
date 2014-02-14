@@ -34,7 +34,7 @@ var getLongHashForm = function (string) {
         var r = string.substring(1, 2),
             g = string.substring(2, 3),
             b = string.substring(3);
-        return r + r + g + g + b + b;
+        return '#' + r + r + g + g + b + b;
     }
 
     return string;
