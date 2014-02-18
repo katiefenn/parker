@@ -13,7 +13,7 @@ module.exports = {
 };
 
 var getSelectorBlock = function (rule) {
-    var pattern = /([\w,\.#\-\[\]\"=\s:>]+)[\s]?\{/g,
+    var pattern = /([^{]+)\{/g,
         results = pattern.exec(rule);
 
     return results[1];
