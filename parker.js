@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*! csstool v0.0.0 - MIT license */
 
 'use strict';
@@ -17,12 +19,24 @@ console.log(clc.red('PA') + clc.yellow('RK') + clc.green('ER') + '-JS');
 
 var parker = new Parker(metrics);
 
-if(argv.f) {
-    fs.readFile(argv.f, {encoding: 'utf8'}, function (err, data) {
-        var results = parker.run(data);
-        _.each(metrics, function(metric) {
-            console.log(metric.name + ': ' + results[metric.id]);
-        });
+if (argv._) {
+    var stylesheets = [];
+    _.each(argv._, function (filename) {
+        var onComplete = function (err, data) {
+            stylesheets.push(data);
+            if (stylesheets.length === argv._.length) {
+                onAllComplete();
+            }
+        };
+
+        var onAllComplete = function () {
+            var results = parker.run(stylesheets);
+            _.each(metrics, function(metric) {
+                console.log(metric.name + ': ' + results[metric.id]);
+            });
+        };
+
+        fs.readFile(filename, {encoding: 'utf8'}, onComplete);
     });
 }
 else {

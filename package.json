@@ -1,7 +1,7 @@
 {
     "name": "parker",
     "description": "A stylesheet analysis tool",
-    "version": "0.0.0",
+    "version": "0.0.3",
     "main": "parker.js",
     "dependencies": {
         "chai": "*",
@@ -13,5 +13,6 @@
     },
     "scripts": {
         "test": "mocha --no-colors --reporter spec"
-    }
+    },
+    "bin": {"parker": "./parker.js"}
 }
