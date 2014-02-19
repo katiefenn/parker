@@ -24,5 +24,7 @@ module.exports = [
 
     // Colour
     require('./TotalUniqueColours.js'),
-    require('./UniqueColours.js')
+    require('./UniqueColours.js'),
+
+    require('./TotalImportantKeywords.js')
 ];
