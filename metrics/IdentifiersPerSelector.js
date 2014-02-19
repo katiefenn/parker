@@ -25,7 +25,7 @@ var getIdentifiers = function (selector) {
         segments = selector.split(/\s+[\s\+>]\s?|~^=/g);
 
     _.each(segments, function (segment) {
-        identifiers = identifiers.concat(segment.match(/[#\.:]?[\w\-\*]+|\[[\w=\-~'"\|]+\]|:{2}[\w-]+/g));
+        identifiers = identifiers.concat(segment.match(/[#\.:]?[\w\-\*]+|\[[\w=\-~'"\|]+\]|:{2}[\w-]+/g) || []);
     });
 
     return identifiers;
