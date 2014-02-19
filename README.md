@@ -35,3 +35,7 @@ From the repo root:
 npm install
 npm test
 ```
+
+## About
+
+Parker is my first open source project, and your suggestions and feedback are welcome. The project is in a pre-beta phase and is liable to change at any time. Parker is named for the character Parker from Gerry Anderson's Thunderbirds, without which my interest in technology and computers would certainly not be what it is today. Parker is very Nosey about your stylesheets.
