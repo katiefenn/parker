@@ -2,7 +2,7 @@
 
 Parker is a stylesheet analysis tool. It runs metrics on your stylesheets and will report on their complexity.
 
-[![Build Status](https://secure.travis-ci.org/user/parker.png?branch=master)](http://travis-ci.org/user/parker)
+[![Build Status](https://secure.travis-ci.org/katiefenn/parker.png?branch=master)](http://travis-ci.org/katiefenn/parker)
 
 
 ## Installation
@@ -10,7 +10,21 @@ Parker is a stylesheet analysis tool. It runs metrics on your stylesheets and wi
 Install with npm:
 
 ```
-npm install --save parker
+npm install -g parker
+```
+
+## Usage
+
+### Measuring Local Stylesheets
+
+```
+parker a.css b.css c.css
+```
+
+### Measuring a Remote Stylesheet Using Curl
+
+```
+curl http://www.katiefenn.co.uk/css/shuttle.css -s | parker
 ```
 
 ## Testing
