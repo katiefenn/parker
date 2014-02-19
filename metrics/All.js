@@ -3,24 +3,26 @@
 'use strict';
 
 module.exports = [
-    // Stylesheet metrics
+    // Stylesheet Totals
     require('./TotalStylesheets.js'),
     require('./TotalStylesheetSize.js'),
 
-    // Rule metrics
-    require('./SelectorsPerRule.js'),
-
-    // Selector metrics
-    require('./IdentifiersPerSelector.js'),
+    // Stylesheet Element Totals
+    require('./TotalRules.js'),
     require('./TotalSelectors.js'),
+    require('./TotalIdentifiers.js'),
+    require('./TotalDeclarations.js'),
+
+    // Stylesheet Element Averages
+    require('./SelectorsPerRule.js'),
+    require('./IdentifiersPerSelector.js'),
+
+    // Specificity
     require('./SpecificityPerSelector.js'),
     require('./TopSelectorSpecificity.js'),
     require('./TopSelectorSpecificitySelector.js'),
 
-    // Identifier metrics
-    require('./TotalIdentifiers.js'),
-
-    // Declaration metrics
+    // Colour
     require('./TotalUniqueColours.js'),
     require('./UniqueColours.js')
 ];
