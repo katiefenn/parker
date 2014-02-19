@@ -19,7 +19,7 @@ console.log(clc.red('PA') + clc.yellow('RK') + clc.green('ER') + '-JS');
 
 var parker = new Parker(metrics);
 
-if (argv._) {
+if (argv._.length > 0) {
     var stylesheets = [];
     _.each(argv._, function (filename) {
         var onComplete = function (err, data) {
