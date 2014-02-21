@@ -4,12 +4,13 @@
     "version": "0.0.4",
     "main": "parker.js",
     "dependencies": {
-        "chai": "*",
-        "mocha": "*",
         "underscore": "*",
-        "backbone": "*",
         "cli-color": "*",
         "minimist": "0.0.7"
+    },
+    "devDependencies": {
+        "chai": "*",
+        "mocha": "*"
     },
     "scripts": {
         "test": "mocha --no-colors --reporter spec"
