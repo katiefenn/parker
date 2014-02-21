@@ -9,7 +9,8 @@
         "underscore": "*",
         "backbone": "*",
         "cli-color": "*",
-        "minimist": "0.0.7"
+        "minimist": "0.0.7",
+        "async": "~0.2.10"
     },
     "scripts": {
         "test": "mocha --no-colors --reporter spec"
