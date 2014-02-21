@@ -21,8 +21,17 @@ describe('The Stylesheet Parser', function() {
         expect(cssStylesheet.getRules()).to.have.length(2);
     });
 
-    it('should ignore comments', function() {
+    it('should ignore comments', function () {
         var cssStylesheet = new CssStylesheet("body {border: 0;} /* ./* */ a {color: #fff; /* comment */} * {margin: 0;}");
         expect(cssStylesheet.getRules()).to.have.length(3);
+    });
+
+    it('should ignore newline characters', function () {
+        var cssStylesheet = new CssStylesheet("body {\nborder: 0;\n}\na{\ncolor: #fff;\n}");
+        expect(cssStylesheet.getRules()[0]).to.equal("body {border: 0;}");
+        expect(cssStylesheet.getRules()[1]).to.equal("a{color: #fff;}");
+        var cssStylesheet = new CssStylesheet("body {\r\nborder: 0;\r\n}\r\na{\r\ncolor: #fff;\r\n}");
+        expect(cssStylesheet.getRules()[0]).to.equal("body {border: 0;}");
+        expect(cssStylesheet.getRules()[1]).to.equal("a{color: #fff;}");
     });
 });
