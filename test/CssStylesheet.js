@@ -20,4 +20,9 @@ describe('The Stylesheet Parser', function() {
         cssStylesheet = new CssStylesheet(multipleSelectors);
         expect(cssStylesheet.getRules()).to.have.length(2);
     });
+
+    it('should ignore comments', function() {
+        var cssStylesheet = new CssStylesheet("body {border: 0;} /* ./* */ a {color: #fff; /* comment */} * {margin: 0;}");
+        expect(cssStylesheet.getRules()).to.have.length(3);
+    });
 });
