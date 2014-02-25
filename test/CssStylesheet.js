@@ -5,7 +5,7 @@ var expect = require('chai').expect,
 
 describe('The Stylesheet Parser', function() {
 
-    it('should return (n) items of child rules for a stylesheet of (n) declarations', function() {
+    it('should return (n) items of child rules for a stylesheet of (n) rules', function() {
         var cssStylesheet = new CssStylesheet("body {border: 0} h1 {font-weight: bold;}");
         expect(cssStylesheet.getRules()).to.have.length(2);
 
@@ -19,6 +19,20 @@ describe('The Stylesheet Parser', function() {
             + "form#registration-form > input.username {font-weight: bold;}";
         cssStylesheet = new CssStylesheet(multipleSelectors);
         expect(cssStylesheet.getRules()).to.have.length(2);
+    });
+
+    it('should distinguish between rules and at-rules', function () {
+        var cssStylesheet = new CssStylesheet("@media screen { body {border: 0;} } @include (styles.css); body { margin: 0; }");
+        expect(cssStylesheet.getAtRules()[0]).to.equal('@media screen { body {border: 0;} }');
+        expect(cssStylesheet.getAtRules()[1]).to.equal('@include (styles.css);');
+        expect(cssStylesheet.getRules()[0]).to.equal('body { margin: 0; }');
+    });
+
+    it('should return (n) items of child at-rules for a stylesheet of (n) at-rules', function () {
+        var cssStylesheet = new CssStylesheet("@media screen { body {border: 0;} } @media print { a {color: #000;} } @include (styles.css);");
+        expect(cssStylesheet.getAtRules()[0]).to.equal('@media screen { body {border: 0;} }');
+        expect(cssStylesheet.getAtRules()[1]).to.equal('@media print { a {color: #000;} }');
+        expect(cssStylesheet.getAtRules()[2]).to.equal('@include (styles.css);');
     });
 
     it('should ignore comments', function () {
