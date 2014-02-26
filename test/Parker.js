@@ -114,6 +114,14 @@ describe('The Parker tool', function() {
         expect(report['mock-rule-metric']).to.equal(2);
     });
 
+    it('should run metrics on at-rules', function() {
+        var mockMetric = {id: 'mock-at-rule-metric', type: 'atrule', aggregate: 'sum', measure: function() {return 1;}};
+        parker = new Parker([mockMetric]),
+        report = parker.run('@media print { body { margin: 100px; }} @import url(css/styles.css); body { margin: 0; }');
+        expect(report).to.have.property('mock-at-rule-metric');
+        expect(report['mock-at-rule-metric']).to.equal(2);
+    });
+
     it('should run metrics on selectors', function() {
         var mockMetric = {id: 'mock-selector-metric', type: 'selector', aggregate: 'sum', measure: function() {return 1}};
         parker = new Parker([mockMetric]);
