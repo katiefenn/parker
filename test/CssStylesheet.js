@@ -4,6 +4,11 @@ var expect = require('chai').expect,
     CssStylesheet = require('../lib/CssStylesheet.js');
 
 describe('The Stylesheet Parser', function() {
+    it('should return an empty array of child rules for an empty string', function () {
+        var cssStylesheet = new CssStylesheet('');
+        expect(cssStylesheet.getRules()).to.be.an('array');
+        expect(cssStylesheet.getRules()).to.be.empty;
+    });
 
     it('should return (n) items of child rules for a stylesheet of (n) rules', function() {
         var cssStylesheet = new CssStylesheet("body {border: 0} h1 {font-weight: bold;}");
@@ -21,18 +26,18 @@ describe('The Stylesheet Parser', function() {
         expect(cssStylesheet.getRules()).to.have.length(2);
     });
 
-    it('should distinguish between rules and at-rules', function () {
+    it('should distinguish between media-queries and at-rules', function () {
         var cssStylesheet = new CssStylesheet("@media screen { body {border: 0;} } @include (styles.css); body { margin: 0; }");
-        expect(cssStylesheet.getAtRules()[0]).to.equal('@media screen { body {border: 0;} }');
-        expect(cssStylesheet.getAtRules()[1]).to.equal('@include (styles.css);');
+        expect(cssStylesheet.getMediaQueries()[0]).to.equal('@media screen { body {border: 0;} }');
+        expect(cssStylesheet.getMediaQueries()).to.have.length(1);
         expect(cssStylesheet.getRules()[0]).to.equal('body { margin: 0; }');
     });
 
-    it('should return (n) items of child at-rules for a stylesheet of (n) at-rules', function () {
+    it('should return (n) items of child media-queries for a stylesheet of (n) media-queries', function () {
         var cssStylesheet = new CssStylesheet("@media screen { body {border: 0;} } @media print { a {color: #000;} } @include (styles.css);");
-        expect(cssStylesheet.getAtRules()[0]).to.equal('@media screen { body {border: 0;} }');
-        expect(cssStylesheet.getAtRules()[1]).to.equal('@media print { a {color: #000;} }');
-        expect(cssStylesheet.getAtRules()[2]).to.equal('@include (styles.css);');
+        expect(cssStylesheet.getMediaQueries()).to.have.length(2);
+        expect(cssStylesheet.getMediaQueries()[0]).to.equal('@media screen { body {border: 0;} }');
+        expect(cssStylesheet.getMediaQueries()[1]).to.equal('@media print { a {color: #000;} }');
     });
 
     it('should ignore comments', function () {
