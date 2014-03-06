@@ -176,4 +176,13 @@ describe('The Parker tool', function() {
         expect(report).to.have.property('mock-value-metric');
         expect(report['mock-value-metric']).to.equal(5);
     });
+
+    it('should return results for metrics measuring optional elements when those elements are not found', function () {
+        var mockMetric = {id: 'mock-media-query-metric', type: 'mediaquery', aggregate: 'length', measure: function(query) {return query;}};
+            parker = new Parker([mockMetric]),
+            report = parker.run('body { margin: 0; }');
+
+        expect(report).to.have.property('mock-media-query-metric');
+        expect(report['mock-media-query-metric']).to.equal(0);
+    });
 });
