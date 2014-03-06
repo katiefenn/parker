@@ -6,7 +6,8 @@
     "dependencies": {
         "underscore": "*",
         "cli-color": "*",
-        "minimist": "0.0.7"
+        "minimist": "0.0.7",
+        "async": "~0.2.10"
     },
     "devDependencies": {
         "chai": "*",
@@ -15,5 +16,11 @@
     "scripts": {
         "test": "mocha --no-colors --reporter spec"
     },
-    "bin": {"parker": "./parker.js"}
+    "bin": {"parker": "./parker.js"},
+    "homepage": "https://github.com/katiefenn/parker",
+    "bugs": "https://github.com/katiefenn/parker/issues",
+    "author": "Katie Fenn",
+    "repository": "https://github.com/katiefenn/parker",
+    "preferGlobal": true,
+    "license": "MIT"
 }

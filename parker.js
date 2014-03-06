@@ -13,7 +13,9 @@ var _ = require('underscore'),
     metrics = require('./metrics/All.js'),
     clc = require('cli-color'),
     argv = require('minimist')(process.argv.slice(2)),
-    fs = require('fs');
+    fs = require('fs'),
+    async = require('async'),
+    path = require('path');
 
 console.log(clc.red('PA') + clc.yellow('RK') + clc.green('ER') + '-JS');
 
@@ -21,22 +23,37 @@ var parker = new Parker(metrics);
 
 if (argv._.length > 0) {
     var stylesheets = [];
-    _.each(argv._, function (filename) {
+
+    async.each(argv._, function (filename, done) {
         var onComplete = function (err, data) {
             stylesheets.push(data);
-            if (stylesheets.length === argv._.length) {
-                onAllComplete();
-            }
         };
 
-        var onAllComplete = function () {
-            var results = parker.run(stylesheets);
-            _.each(metrics, function(metric) {
-                console.log(metric.name + ': ' + results[metric.id]);
+        if (filename.indexOf('.css') === -1) {
+            fs.readdir(filename, function (err, files) {
+                async.each(files, function (file, fileDone) {
+                    if (file.indexOf('.css') === -1) {
+                        return fileDone();
+                    }
+
+                    fs.readFile(path.join(filename, file), {encoding: 'utf8'}, function (err, fileData) {
+                        onComplete(err, fileData);
+                        fileDone();
+                    });
+                }, done);
             });
-        };
-
-        fs.readFile(filename, {encoding: 'utf8'}, onComplete);
+        }
+        else {
+            fs.readFile(filename, {encoding: 'utf8'}, function (err, fileData) {
+                onComplete(err, fileData);
+                done();
+            });
+        }
+    }, function (err) {
+        var results = parker.run(stylesheets);
+        _.each(metrics, function(metric) {
+            console.log(metric.name + ': ' + results[metric.id]);
+        });
     });
 }
 else {
