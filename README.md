@@ -20,6 +20,9 @@ npm install -g parker
 ```
 parker a.css b.css c.css
 ```
+```
+parker css/
+```
 
 ### Measuring a Remote Stylesheet Using Curl
 
@@ -36,6 +39,12 @@ npm install
 npm test
 ```
 
+## Contributing
+
+Pull requests, issues, new unit tests, code reviews and good advice are all things that would make a difference to Parker. You can even contribute by telling me how useful Parker is to you; please let me know on Twitter at @katie_fenn. Any time generously donated to helping make Parker better is gratefully accepted, and in return I shall do my best to merge contributions.
+
+Please target pull requests at the "develop" branch.
+
 ## About
 
-Parker is my first open source project, and your suggestions and feedback are welcome. The project is in a pre-beta phase and is liable to change at any time. Parker is named for the character Parker from Gerry Anderson's Thunderbirds, without which my interest in technology and computers would certainly not be what it is today. Parker is very Nosey about your stylesheets.
+Parker is my first open source project, and your suggestions and feedback are welcome. The project is in a pre-beta phase and is liable to change at any time. Parker is named for the character Parker from Gerry Anderson's Thunderbirds, without which my interest in technology and computers would certainly not be what it is today. Parker is Nosey about your stylesheets.
