@@ -26,5 +26,10 @@ module.exports = [
     require('./TotalUniqueColours.js'),
     require('./UniqueColours.js'),
 
-    require('./TotalImportantKeywords.js')
+    // Important Keywords
+    require('./TotalImportantKeywords.js'),
+
+    // Media Queries
+    require('./TotalMediaQueries.js'),
+    require('./MediaQueries.js')
 ];
