@@ -15,11 +15,22 @@ var _ = require('underscore'),
     argv = require('minimist')(process.argv.slice(2)),
     fs = require('fs'),
     async = require('async'),
-    path = require('path');
+    path = require('path'),
+    info = require('./lib/Info.js');
 
 console.log(clc.red('PA') + clc.yellow('RK') + clc.green('ER') + '-JS');
 
 var parker = new Parker(metrics);
+
+if (argv.h || argv.help) {
+    info.help();
+    process.exit();
+}
+
+if (argv.V || argv.version) {
+    info.version();
+    process.exit();
+}
 
 if (argv._.length > 0) {
     var stylesheets = [];
