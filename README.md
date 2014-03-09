@@ -27,6 +27,12 @@ parker a.css b.css c.css
 curl http://www.katiefenn.co.uk/css/shuttle.css -s | parker
 ```
 
+### Output JSON
+
+```
+parker example.css --json
+```
+
 ## Testing
 
 From the repo root:
