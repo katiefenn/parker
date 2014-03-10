@@ -11,7 +11,7 @@
 var _ = require('underscore'),
     Parker = require('./lib/Parker.js'),
     metrics = require('./metrics/All.js'),
-    format = require('./lib/format'),
+    formatters = require('./lib/formatters'),
     clc = require('cli-color'),
     argv = require('minimist')(process.argv.slice(2)),
     fs = require('fs'),
@@ -19,9 +19,15 @@ var _ = require('underscore'),
     path = require('path');
 
 
-var format = argv.json ? format.json: format.human;
+var format = argv.format || 'human';
+var foutput = formatters[format];
 
-if (!argv.json) {
+if (!foutput) {
+    console.error('Unknown output format: %s', argv.format);
+    console.error('  available: ' + Object.keys(formatters).join(' '));
+    process.exit(1);
+}
+if (format === 'human') {
     console.log(clc.red('PA') + clc.yellow('RK') + clc.green('ER') + '-JS');
 }
 
@@ -57,7 +63,7 @@ if (argv._.length > 0) {
         }
     }, function (err) {
         var results = parker.run(stylesheets);
-        console.log(format(metrics, results));
+        console.log(foutput(metrics, results));
     });
 }
 else {
@@ -71,6 +77,6 @@ else {
 
     process.stdin.on('end', function() {
         var results = parker.run(stdinData);
-        console.log(format(metrics, results));
+        console.log(foutput(metrics, results));
     });
 }
