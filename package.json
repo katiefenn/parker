@@ -1,7 +1,7 @@
 {
     "name": "parker",
     "description": "A stylesheet analysis tool",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "main": "parker.js",
     "dependencies": {
         "underscore": "*",
