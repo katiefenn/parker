@@ -42,6 +42,20 @@ cliController.on('runPaths', function (filePaths) {
     });
 });
 
+cliController.on('runStdin', function () {
+    process.stdin.resume();
+    process.stdin.setEncoding('utf8');
+    var stdinData = '';
+
+    process.stdin.on('data', function(chunk) {
+        stdinData += chunk;
+    });
+
+    process.stdin.on('end', function() {
+        runReport(stdinData, metrics);
+    });
+});
+
 cliController.on('showVersion', function () {
     info.version();
     process.exit();
