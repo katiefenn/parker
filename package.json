@@ -5,13 +5,16 @@
     "main": "parker.js",
     "dependencies": {
         "underscore": "*",
+        "backbone": "*",
         "cli-color": "*",
         "minimist": "0.0.7",
         "async": "~0.2.10"
     },
     "devDependencies": {
         "chai": "*",
-        "mocha": "*"
+        "mocha": "*",
+        "sinon": "*",
+        "sinon-chai": "*"
     },
     "scripts": {
         "test": "mocha --no-colors --reporter spec"
