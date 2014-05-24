@@ -1,5 +1,5 @@
 # Metrics
-Parker has a suite of metrics that are useful for measuring stylesheets. What follows is a list of all the metrics that are bundled with Parker. Parker's metrics are modular and it's easy to write your own - find out how here.
+Parker has a suite of metrics that are useful for measuring stylesheets. What follows is a list of all the metrics that are bundled with Parker. Parker's metrics are modular and it's easy to write your own - find out how [here](#authoring-metrics).
 
 1. [Bundled Metrics](#bundled-metrics)
 	1. [Stylesheet Totals](#stylesheet-totals)
