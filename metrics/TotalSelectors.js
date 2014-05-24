@@ -9,6 +9,7 @@ module.exports = {
     name: 'Total Selectors',
     type: 'selector',
     aggregate: 'sum',
+    format: 'number',
     measure: function (selector) {
         return 1;
     }

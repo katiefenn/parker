@@ -9,6 +9,7 @@ module.exports = {
     name: 'Top Selector Specificity Selector',
     type: 'selector',
     aggregate: 'max',
+    format: 'string',
     measure: function (selector) {
         return selector;
     },

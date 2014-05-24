@@ -9,6 +9,7 @@ module.exports = {
     name: 'Media Queries',
     type: 'mediaquery',
     aggregate: 'list',
+    format: 'list',
     measure: function (query) {
         return query;
     },

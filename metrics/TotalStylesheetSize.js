@@ -7,6 +7,7 @@ module.exports = {
     name: 'Total Stylesheet Size',
     type: 'stylesheet',
     aggregate: 'sum',
+    format: 'number',
     measure: function (stylesheet) {
         return byteCount(stylesheet);
     }

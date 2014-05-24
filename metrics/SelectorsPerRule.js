@@ -7,6 +7,7 @@ module.exports = {
     name: 'Selectors Per Rule',
     type: 'rule',
     aggregate: 'mean',
+    format: 'number',
     measure: function (rule) {
         return getSelectors(getSelectorBlock(rule)).length;
     }

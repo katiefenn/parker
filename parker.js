@@ -76,6 +76,12 @@ cliController.on('setFormat', function (format) {
     }
 });
 
+cliController.on('showNumericOnly', function () {
+    metrics = _.filter(metrics, function (metric) {
+        return metric.format == 'number';
+    });
+});
+
 var readDirectory = function (directoryPath, onFileLoad, onAllLoad) {
     fs.readdir(directoryPath, function (err, files) {
         async.each(files, function (file, fileDone) {

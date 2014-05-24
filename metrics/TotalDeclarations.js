@@ -7,6 +7,7 @@ module.exports = {
     name: 'Total Declarations',
     type: 'declaration',
     aggregate: 'sum',
+    format: 'number',
     measure: function (declaration) {
         return 1;
     }

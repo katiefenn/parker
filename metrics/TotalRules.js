@@ -7,6 +7,7 @@ module.exports = {
     name: 'Total Rules',
     type: 'rule',
     aggregate: 'sum',
+    format: 'number',
     measure: function (rule) {
         return 1;
     }

@@ -7,6 +7,7 @@ module.exports = {
     name: 'Total Stylesheets',
     type: 'stylesheet',
     aggregate: 'sum',
+    format: 'number',
     measure: function (stylesheet) {
         return 1;
     }
