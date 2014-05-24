@@ -15,8 +15,8 @@ Measuring a remote stylesheet using curl:
 
 	curl http://www.katiefenn.co.uk/css/shuttle.css -s | parker
 
+<a name="options"></a>
 ## Options
-
 ### -f --format
 Set output format.
 
