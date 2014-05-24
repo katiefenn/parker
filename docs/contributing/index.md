@@ -5,3 +5,14 @@ Pull requests, issues, new unit tests, code reviews and good advice are all thin
 The source-code is hosted at [GitHub](https://github.com/katiefenn/Parker).
 
 When creating pull requests, please target the develop branch.
+
+## Testing
+A suite of unit tests are maintained to test Parker. The tools Mocha, Chai and Sinon are amoung the tools used for testing.
+
+From the project root, dependencies can be installed using the following command:
+
+	npm install
+
+Unit tests can be run using the following command:
+
+	npm test
