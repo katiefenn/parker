@@ -9,6 +9,7 @@ module.exports = {
     name: 'Identifiers Per Selector',
     type: 'selector',
     aggregate: 'mean',
+    format: 'number',
     measure: function (selector) {
         var identifiers = getIdentifiers(selector);
 

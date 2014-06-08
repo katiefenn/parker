@@ -9,6 +9,7 @@ module.exports = {
     name: 'Specificity Per Selector',
     type: 'selector',
     aggregate: 'mean',
+    format: 'number',
     measure: function (selector) {
         var totalSpecificity = 0;
         _.each(getIdentifiers(selector), function (identifier) {

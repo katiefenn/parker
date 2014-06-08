@@ -9,6 +9,7 @@ module.exports = {
     name: 'Total Unique Colors',
     type: 'value',
     aggregate: 'length',
+    format: 'number',
     measure: function (value) {
         return getColourHexes(value).map(function (colourHex) {
             return getLongHashForm(colourHex).toUpperCase();

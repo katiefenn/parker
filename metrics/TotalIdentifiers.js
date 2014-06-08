@@ -9,6 +9,7 @@ module.exports = {
     name: 'Total Identifiers',
     type: 'identifier',
     aggregate: 'sum',
+    format: 'number',
     measure: function (identifier) {
         return 1;
     }

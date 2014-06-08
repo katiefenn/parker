@@ -9,6 +9,7 @@ module.exports = {
     name: 'Unique Colors',
     type: 'value',
     aggregate: 'list',
+    format: 'list',
     measure: function (value) {
         return getColourHexes(value).map(function (colourHex) {
             return getLongHashForm(colourHex).toUpperCase();
