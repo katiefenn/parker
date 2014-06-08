@@ -1,8 +1,8 @@
 {
     "name": "parker",
     "description": "Stylesheet analysis tool for CSS",
-    "keywords": ['css','stylesheet','analysis'],
-    "version": "0.0.6",
+    "keywords": ["css","stylesheet","analysis"],
+    "version": "0.0.7",
     "main": "parker.js",
     "dependencies": {
         "underscore": "*",
