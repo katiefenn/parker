@@ -27,7 +27,7 @@ parker css/
 ### Measuring a Remote Stylesheet Using Curl
 
 ```
-curl http://www.katiefenn.co.uk/css/shuttle.css -s | parker
+curl http://www.katiefenn.co.uk/css/shuttle.css -s | parker -s
 ```
 
 ### Output JSON
@@ -35,6 +35,10 @@ curl http://www.katiefenn.co.uk/css/shuttle.css -s | parker
 ```
 parker example.css --format=json
 ```
+
+## Documentation
+
+Documentation can be found in markdown format the [docs folder](https://github.com/katiefenn/parker/tree/master/docs).
 
 ## Testing
 
