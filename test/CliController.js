@@ -81,6 +81,15 @@ describe('The CLI Controller', function() {
         expect(callback).to.have.been.calledWith('json');
     });
 
+    it('responds to no data supplied by dispatching a help event', function () {
+        var callback = sinon.spy(),
+            cliController = new CliController();
+        
+        cliController.on('showHelp', callback);
+        cliController.dispatch({});
+        expect(callback).to.have.been.called;
+    });
+
     it('responds to unnamed arguments by dispatching file event, then a run event', function () {
         var pathsCallback = sinon.spy(),
             cliController = new CliController();
