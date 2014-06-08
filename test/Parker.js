@@ -36,6 +36,18 @@ describe('The Parker tool', function() {
         expect(report['mock-stylesheet-metric']).to.equal(3);
     });
 
+    it('should return 0 for sum metrics with no data to report on', function() {
+        var mockMetric = {id: 'mock-stylesheet-metric', type: 'rule', aggregate: 'sum', measure: function() {return 1}},
+            stylesheet = '/* comment */';
+
+        parker = new Parker([mockMetric]);
+        var report = parker.run([stylesheet, stylesheet, stylesheet]);
+
+        
+        expect(report).to.have.property('mock-stylesheet-metric');
+        expect(report['mock-stylesheet-metric']).to.equal(0);
+    });
+
     it('should return mean values for mean metrics', function() {
         var mockMetric = {id: 'mock-stylesheet-metric', type: 'stylesheet', aggregate: 'mean', measure: function() {return 1}},
             stylesheet = 'body {background: #FFF;}';
@@ -48,6 +60,18 @@ describe('The Parker tool', function() {
         expect(report['mock-stylesheet-metric']).to.equal(1);
     });
 
+    it('should return 0 for mean metrics with no data to report on', function () {
+        var mockMetric = {id: 'mock-stylesheet-metric', type: 'rule', aggregate: 'mean', measure: function() {return 1}},
+            stylesheet = '/* comment */';
+
+        parker = new Parker([mockMetric]);
+        var report = parker.run([stylesheet]);
+
+        
+        expect(report).to.have.property('mock-stylesheet-metric');
+        expect(report['mock-stylesheet-metric']).to.equal(0);
+    });
+
     it('should return max values for max metrics', function () {
         var mockIntMetric = {id: 'mock-int-metric', type: 'stylesheet', aggregate: 'max', measure: function(stylesheet) {return stylesheet.length;}},
             parker = new Parker([mockIntMetric]),
@@ -55,6 +79,15 @@ describe('The Parker tool', function() {
         
         expect(report).to.have.property('mock-int-metric');
         expect(report['mock-int-metric']).to.equal(27);
+    });
+
+    it('should return 0 for max metrics with no data to report on', function () {
+        var mockIntMetric = {id: 'mock-int-metric', type: 'rule', aggregate: 'max', measure: function(stylesheet) {return stylesheet.length;}},
+            parker = new Parker([mockIntMetric]),
+            report = parker.run(['/* comment */']);
+        
+        expect(report).to.have.property('mock-int-metric');
+        expect(report['mock-int-metric']).to.equal(0);
     });
 
     it('should return max values determined by an iterator function if one is present', function() {
