@@ -19,9 +19,7 @@ var _ = require('underscore'),
     path = require('path'),
     info = require('./lib/Info');
 
-var cliController = new CliController(),
-    parker = new Parker(metrics),
-    formatter = formatters['human'];
+var cliController = new CliController();
 
 cliController.on('runPaths', function (filePaths) {
     var stylesheets = [];
@@ -112,4 +110,10 @@ var runReport = function (stylesheets, metrics) {
     console.log(formatter(metrics, results));
 };
 
-cliController.dispatch(argv);
+if (module.parent) {
+    module.exports = Parker;
+} else {
+    var parker = new Parker(metrics),
+    formatter = formatters['human'];
+    cliController.dispatch(argv);
+}
