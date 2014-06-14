@@ -86,6 +86,12 @@ var countPseudoClassIdentifiers = function  (identifier) {
     var regex = /:[^:]/,
         matches = regex.exec(identifier);
 
+    // :not pseudo-class identifier itself is ignored
+    // only selectors inside it are counted
+    if (identifier.match(/:not/)) {
+        return 0;
+    }
+
     if (matches) {
         return matches.length;
     }
