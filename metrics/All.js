@@ -21,6 +21,7 @@ module.exports = [
     require('./SpecificityPerSelector.js'),
     require('./TopSelectorSpecificity.js'),
     require('./TopSelectorSpecificitySelector.js'),
+    require('./TotalIdSelectors.js'),
 
     // Colour
     require('./TotalUniqueColours.js'),
