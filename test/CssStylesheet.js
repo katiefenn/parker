@@ -53,4 +53,17 @@ describe('The Stylesheet Parser', function() {
         expect(cssStylesheet.getRules()[0]).to.equal("body {border: 0;}");
         expect(cssStylesheet.getRules()[1]).to.equal("a{color: #fff;}");
     });
+
+    it('should return an array of malformed statements for a string containing malformed statements', function () {
+        var cssStylesheet = new CssStylesheet('body {border: 0;} h1; h2 {font-weight: bold;}');
+        expect(cssStylesheet.getRules()).to.be.an('array');
+        expect(cssStylesheet.getMalformedStatements()[0]).to.equal('h1;');
+    });
+
+    it('should identify a rule with an unexpected colon as a malformed statement', function () {
+        var cssStylesheet = new CssStylesheet('body {border: 0;} h1;{font-weight: bold;}');
+        expect(cssStylesheet.getRules()).to.be.an('array');
+        expect(cssStylesheet.getMalformedStatements()[0]).to.equal('h1;');
+        expect(cssStylesheet.getMalformedStatements()[1]).to.equal('{font-weight: bold;}');
+    });
 });
