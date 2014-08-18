@@ -8,6 +8,7 @@ Parker is a stylesheet analysis tool. It runs metrics on your stylesheets and wi
     2. [Installing Parker](installation/readme.md#install-parker)
 2. [Usage](usage/readme.md)
 	1. [Options](usage/readme.md#options)
+3. [Using Parker as a Package](usage-package/readme.md)
 3. [Metrics](metrics/readme.md)
 	1. [Bundled Metrics](metrics/readme.md#bundled-metrics)
 	2. [Authoring Metrics](metrics/readme.md#authoring-metrics)
