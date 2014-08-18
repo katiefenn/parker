@@ -81,6 +81,15 @@ describe('The CLI Controller', function() {
         expect(callback).to.have.been.calledWith('json');
     });
 
+    it('responds to a --config switch by dispatching a config event', function () {
+        var callback = sinon.spy(),
+            cliController = new CliController();
+
+        cliController.on('useConfig', callback);
+        cliController.dispatch({'config': './path/to/config.js'});
+        expect(callback).to.have.been.calledWith('./path/to/config.js');
+    });
+
     it('responds to no data supplied by dispatching a help event', function () {
         var callback = sinon.spy(),
             cliController = new CliController();

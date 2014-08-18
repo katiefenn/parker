@@ -12,12 +12,18 @@ var _ = require('underscore'),
     Parker = require('./lib/Parker'),
     CliController = require('./lib/CliController'),
     metrics = require('./metrics/All'),
-    formatters = require('./lib/Formatters'),
+    formatters = {
+        'human': require('./lib/formatters/Human.js'),
+        'json': require('./lib/formatters/Json.js'),
+        'csv': require('./lib/formatters/Csv.js'),
+        'warnings': require('./lib/formatters/Warnings.js')
+    },
     argv = require('minimist')(process.argv.slice(2)),
     fs = require('fs'),
     async = require('async'),
     path = require('path'),
-    info = require('./lib/Info');
+    info = require('./lib/Info'),
+    warningFigures = require('./data/warning-figures-default.js');
 
 var cliController = new CliController();
 
@@ -106,8 +112,11 @@ var fileIsStylesheet = function (filePath) {
 };
 
 var runReport = function (stylesheets, metrics) {
-    var results = parker.run(stylesheets);
-    console.log(formatter(metrics, results));
+    var results = parker.run(stylesheets),
+        options = {
+            warningFigures: warningFigures
+        };
+    console.log(formatter(metrics, results, options));
 };
 
 if (module.parent) {
