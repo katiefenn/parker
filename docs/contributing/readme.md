@@ -9,7 +9,7 @@ When creating pull requests, please target the develop branch.
 
 <a name="testing"></a>
 ## Testing
-A suite of unit tests are maintained to test Parker. The tools Mocha, Chai and Sinon are amoung the tools used for testing.
+A suite of unit tests are maintained to test Parker. The tools Mocha, Chai and Sinon are among the tools used for testing.
 
 From the project root, dependencies can be installed using the following command:
 
