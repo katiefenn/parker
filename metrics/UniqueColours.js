@@ -6,7 +6,7 @@ var _ = require('underscore');
 
 module.exports = {
     id: 'unique-colours',
-    name: 'Unique Colors',
+    name: 'Unique Colours',
     type: 'value',
     aggregate: 'list',
     format: 'list',

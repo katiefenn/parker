@@ -31,7 +31,6 @@ describe('The Parker tool', function() {
         parker = new Parker([mockMetric]);
         var report = parker.run([stylesheet, stylesheet, stylesheet]);
 
-        
         expect(report).to.have.property('mock-stylesheet-metric');
         expect(report['mock-stylesheet-metric']).to.equal(3);
     });
@@ -43,7 +42,6 @@ describe('The Parker tool', function() {
         parker = new Parker([mockMetric]);
         var report = parker.run([stylesheet, stylesheet, stylesheet]);
 
-        
         expect(report).to.have.property('mock-stylesheet-metric');
         expect(report['mock-stylesheet-metric']).to.equal(0);
     });
@@ -55,7 +53,6 @@ describe('The Parker tool', function() {
         parker = new Parker([mockMetric]);
         var report = parker.run([stylesheet, stylesheet, stylesheet]);
 
-        
         expect(report).to.have.property('mock-stylesheet-metric');
         expect(report['mock-stylesheet-metric']).to.equal(1);
     });
@@ -67,7 +64,6 @@ describe('The Parker tool', function() {
         parker = new Parker([mockMetric]);
         var report = parker.run([stylesheet]);
 
-        
         expect(report).to.have.property('mock-stylesheet-metric');
         expect(report['mock-stylesheet-metric']).to.equal(0);
     });
@@ -76,7 +72,7 @@ describe('The Parker tool', function() {
         var mockIntMetric = {id: 'mock-int-metric', type: 'stylesheet', aggregate: 'max', measure: function(stylesheet) {return stylesheet.length;}},
             parker = new Parker([mockIntMetric]),
             report = parker.run(['body {background: #FFF;}', 'body {background: #FFFFFF;}']);
-        
+
         expect(report).to.have.property('mock-int-metric');
         expect(report['mock-int-metric']).to.equal(27);
     });
@@ -85,7 +81,7 @@ describe('The Parker tool', function() {
         var mockIntMetric = {id: 'mock-int-metric', type: 'rule', aggregate: 'max', measure: function(stylesheet) {return stylesheet.length;}},
             parker = new Parker([mockIntMetric]),
             report = parker.run(['/* comment */']);
-        
+
         expect(report).to.have.property('mock-int-metric');
         expect(report['mock-int-metric']).to.equal(0);
     });
@@ -94,7 +90,7 @@ describe('The Parker tool', function() {
         var mockStringMetric = {id: 'mock-string-metric', type: 'stylesheet', aggregate: 'max', measure: function(stylesheet) {return stylesheet;}, iterator: function(string) {return string.length}},
             parker = new Parker([mockStringMetric]),
             report = parker.run(['body {background: #FFF;}', 'body {background: #FFFFFF;}']);
-        
+
         expect(report).to.have.property('mock-string-metric');
         expect(report['mock-string-metric']).to.equal('body {background: #FFFFFF;}');
     });

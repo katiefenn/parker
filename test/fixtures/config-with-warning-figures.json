@@ -1,0 +1,10 @@
+{
+    "files": ["test/fixtures/specificity-warning.css"],
+    "format": "warnings",
+    "show-numeric-only": true,
+    "warning-figures": {
+        "top-selector-specificity": [990, 999],
+        "total-unique-colours": [1, 2],
+        "selectors-per-rule": [0, 1] 
+    }
+}

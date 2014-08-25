@@ -14,7 +14,8 @@
         "chai": "*",
         "mocha": "*",
         "sinon": "*",
-        "sinon-chai": "*"
+        "sinon-chai": "*",
+        "jshint": "~2.5.5"
     },
     "scripts": {
         "test": "mocha --no-colors --reporter spec"

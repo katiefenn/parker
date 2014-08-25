@@ -11,6 +11,7 @@
 var _ = require('underscore'),
     Parker = require('./lib/Parker'),
     CliController = require('./lib/CliController'),
+    ConfigController = require('./lib/ConfigController'),
     metrics = require('./metrics/All'),
     formatters = {
         'human': require('./lib/formatters/Human.js'),
@@ -25,9 +26,13 @@ var _ = require('underscore'),
     info = require('./lib/Info'),
     warningFigures = require('./data/warning-figures-default.js');
 
-var cliController = new CliController();
+if (argv.config) {
+    var controller = new ConfigController();
+} else {
+    var controller = new CliController();
+}
 
-cliController.on('runPaths', function (filePaths) {
+controller.on('runPaths', function (filePaths) {
     var stylesheets = [];
     async.each(filePaths, function (filePath, onAllLoad) {
         var onFileLoad = function (err, data) {
@@ -46,7 +51,7 @@ cliController.on('runPaths', function (filePaths) {
     });
 });
 
-cliController.on('runStdin', function () {
+controller.on('runStdin', function () {
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
     var stdinData = '';
@@ -60,17 +65,17 @@ cliController.on('runStdin', function () {
     });
 });
 
-cliController.on('showVersion', function () {
+controller.on('showVersion', function () {
     info.version();
     process.exit();
 });
 
-cliController.on('showHelp', function () {
+controller.on('showHelp', function () {
     info.help();
     process.exit();
 });
 
-cliController.on('setFormat', function (format) {
+controller.on('setFormat', function (format) {
     formatter = formatters[format];
 
     if (!formatter) {
@@ -80,10 +85,14 @@ cliController.on('setFormat', function (format) {
     }
 });
 
-cliController.on('showNumericOnly', function () {
+controller.on('showNumericOnly', function () {
     metrics = _.filter(metrics, function (metric) {
         return metric.format == 'number';
     });
+});
+
+controller.on('customWarningFigures', function (customWarningFigures) {
+    warningFigures = customWarningFigures;
 });
 
 var readDirectory = function (directoryPath, onFileLoad, onAllLoad) {
@@ -124,5 +133,11 @@ if (module.parent) {
 } else {
     var parker = new Parker(metrics),
     formatter = formatters['human'];
-    cliController.dispatch(argv);
+    if (argv.config) {
+        readFile(argv.config, function (err, filedata) {
+            controller.dispatch(JSON.parse(filedata));
+        });
+    } else {
+        controller.dispatch(argv);
+    }
 }

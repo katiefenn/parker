@@ -22,7 +22,7 @@ describe('The Rule Parser', function () {
         var complexRule = 'body, html, .container .wrapper, #container, .container a[rel="blah"]'
             + '{background: url(img.png); background-color: linear-gradient(45deg, #00f, #f00)}';
         cssRule = new CssRule(complexRule);
-        
+
         expect(cssRule.getDeclarations()).to.have.length(2);
     });
 });
