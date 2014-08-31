@@ -81,6 +81,33 @@ describe('The CLI Controller', function() {
         expect(callback).to.have.been.calledWith('json');
     });
 
+    it('responds to a --warning-figures switch by dispatching a warning figures event', function () {
+        var callback = sinon.spy(),
+            cliController = new CliController();
+
+        cliController.on('setWarningFigures', callback);
+        cliController.dispatch({'warning-figures': 'strict'});
+        expect(callback).to.have.been.calledWith('strict');
+    });
+
+    it('responds to a --strict switch by dispatching a warning figures event', function () {
+        var callback = sinon.spy(),
+            cliController = new CliController();
+
+        cliController.on('setWarningFigures', callback);
+        cliController.dispatch({'strict': true});
+        expect(callback).to.have.been.calledWith('strict');
+    });
+
+    it('responds to a --surpress-colours switch by dispatching a setSurpressColours event', function () {
+        var callback = sinon.spy(),
+            cliController = new CliController();
+
+        cliController.on('setSurpressColours', callback);
+        cliController.dispatch({'surpress-colours': true});
+        expect(callback).to.have.been.called;
+    });
+
     it('responds to no data supplied by dispatching a help event', function () {
         var callback = sinon.spy(),
             cliController = new CliController();

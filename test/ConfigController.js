@@ -43,8 +43,19 @@ describe('The Config Controller', function() {
             warningFigures = {'top-selector-specificity': [50, 99]},
             configController = new ConfigController();
 
-        configController.on('customWarningFigures', callback);
+        configController.on('setWarningFigures', callback);
         configController.dispatch({'warning-figures': warningFigures});
         expect(callback).to.have.been.calledWith(warningFigures);
     });
+
+    it('responds to a "surpress-colours" setting by dispatching a surpress colours event', function () {
+        var callback = sinon.spy(),
+            configController = new ConfigController();
+
+        configController.on('setSurpressColours', callback);
+        configController.dispatch({'surpress-colours': true});
+        expect(callback).to.have.been.called;
+    });
+
+
 });

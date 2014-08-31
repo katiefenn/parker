@@ -24,7 +24,12 @@ var _ = require('underscore'),
     async = require('async'),
     path = require('path'),
     info = require('./lib/Info'),
-    warningFigures = require('./data/warning-figures-default.js');
+    warningFigurePresets = {
+        'default': require('./data/warning-figures-default.js'),
+        'strict': require('./data/warning-figures-strict.js')
+    },
+    warningFigures = warningFigurePresets.default,
+    surpressColours = false;
 
 if (argv.config) {
     var controller = new ConfigController();
@@ -91,9 +96,18 @@ controller.on('showNumericOnly', function () {
     });
 });
 
-controller.on('customWarningFigures', function (customWarningFigures) {
-    warningFigures = customWarningFigures;
+controller.on('setWarningFigures', function (warningFigureSetting) {
+    if (_.isString(warningFigureSetting) && warningFigurePresets.hasOwnProperty(warningFigureSetting)) {
+        warningFigures = warningFigurePresets[warningFigureSetting];
+    }
+    else if (_.isObject(warningFigures)) {
+        warningFigures = warningFigureSetting;
+    }
 });
+
+controller.on('setSurpressColours', function () {
+    surpressColours = true;
+});;
 
 var readDirectory = function (directoryPath, onFileLoad, onAllLoad) {
     fs.readdir(directoryPath, function (err, files) {
@@ -123,10 +137,25 @@ var fileIsStylesheet = function (filePath) {
 var runReport = function (stylesheets, metrics) {
     var results = parker.run(stylesheets),
         options = {
-            warningFigures: warningFigures
+            warningFigures: warningFigures || warningFigurePresets.default,
+            surpressColours: surpressColours
         };
+
     console.log(formatter(metrics, results, options));
+    process.exit(getExitCode(results, warningFigures));
 };
+
+var getExitCode = function (results, warningFigures) {
+    var exitCode = 0;
+
+    _.each(warningFigures, function(warningFigure, id) {
+        if (results[id] >= warningFigure[1]) {
+            exitCode = 1;
+        }
+    });
+
+    return exitCode;
+}
 
 if (module.parent) {
     module.exports = Parker;
