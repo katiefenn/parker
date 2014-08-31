@@ -92,7 +92,7 @@ controller.on('setFormat', function (format) {
 
 controller.on('showNumericOnly', function () {
     metrics = _.filter(metrics, function (metric) {
-        return metric.format == 'number';
+        return metric.format === 'number';
     });
 });
 
@@ -107,7 +107,7 @@ controller.on('setWarningFigures', function (warningFigureSetting) {
 
 controller.on('setSurpressColours', function () {
     surpressColours = true;
-});;
+});
 
 var readDirectory = function (directoryPath, onFileLoad, onAllLoad) {
     fs.readdir(directoryPath, function (err, files) {
@@ -155,13 +155,14 @@ var getExitCode = function (results, warningFigures) {
     });
 
     return exitCode;
-}
+};
 
 if (module.parent) {
     module.exports = Parker;
 } else {
     var parker = new Parker(metrics),
-    formatter = formatters['human'];
+        formatter = formatters.human;
+
     if (argv.config) {
         readFile(argv.config, function (err, filedata) {
             controller.dispatch(JSON.parse(filedata));
