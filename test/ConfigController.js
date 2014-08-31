@@ -1,4 +1,4 @@
-/*! Parker v0.0.0 - MIT license */
+/*! Parker v0.1.0 - MIT license */
 
 var chai = require('chai'),
     expect = require('chai').expect,

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-/*! csstool v0.0.0 - MIT license */
+/*! Parker v0.1.0 - MIT license */
 
 'use strict';
 
