@@ -78,7 +78,7 @@ Measures the total number of rules. Each rule defines a specific behaviour of th
 - __aggregate__: sum
 - __format__: number
 
-
+<a name="total-selectors"></a>
 #### Total Selectors
 Measures the total number of selectors. Each selector defines a group of elements affected by the design. Stylesheets with fewer selectors are simpler.
 
@@ -108,6 +108,7 @@ Measures the total number of property declarations. Each property declaration de
 - __aggregate__: sum
 - __format__: number
 
+<a name="selectors-per-rule"></a>
 #### Selectors Per Rule
 Measures the average number of selectors in every rule. Stylesheet rules can be applied to several groups of elements using multiple selectors, separated by a comma. Fewer selectors in a rule makes its properties specific to a smaller group of elements, and also makes a rule easier to read in text editors and developer tools.
 
@@ -117,6 +118,7 @@ Measures the average number of selectors in every rule. Stylesheet rules can be 
 - __aggregate__: sum
 - __format__: number
 
+<a name="identifiers-per-selector"></a>
 #### Identifiers Per Selector
 Measures the average number of identifiers in every selector. Selectors can be made more specific to combinations of elements by adding more identifiers to a selector. Fewer identifiers in a given selector reduces its dependency on certain DOM structures, allowing more changes to your HTML before being forced to change your CSS. Selectors with fewer identifiers are also more readable.
 
