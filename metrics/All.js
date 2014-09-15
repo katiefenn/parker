@@ -15,6 +15,7 @@ module.exports = [
 
     // Stylesheet Element Averages
     require('./SelectorsPerRule.js'),
+    require('./DeclarationsPerRule.js'),
     require('./IdentifiersPerSelector.js'),
 
     // Specificity

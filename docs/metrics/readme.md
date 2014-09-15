@@ -12,6 +12,7 @@ Parker has a suite of metrics that are useful for measuring stylesheets. What fo
 		4. [Total Declarations](#total-declarations)
 		5. [Selectors Per Rule](#selectors-per-rule)
 		6. [Identifiers Per Selectors](#identifiers-per-selector)
+        7. [Declarations Per Rule](#declarations-per-rule)
 	3. [Specificity](#specificity)
 		1. [Specificity Per Selector](#specificity-per-selector)
 		2. [Top Selector Specificity](#top-selector-specificity)
@@ -78,7 +79,7 @@ Measures the total number of rules. Each rule defines a specific behaviour of th
 - __aggregate__: sum
 - __format__: number
 
-
+<a name="total-selectors"></a>
 #### Total Selectors
 Measures the total number of selectors. Each selector defines a group of elements affected by the design. Stylesheets with fewer selectors are simpler.
 
@@ -108,6 +109,7 @@ Measures the total number of property declarations. Each property declaration de
 - __aggregate__: sum
 - __format__: number
 
+<a name="selectors-per-rule"></a>
 #### Selectors Per Rule
 Measures the average number of selectors in every rule. Stylesheet rules can be applied to several groups of elements using multiple selectors, separated by a comma. Fewer selectors in a rule makes its properties specific to a smaller group of elements, and also makes a rule easier to read in text editors and developer tools.
 
@@ -117,12 +119,23 @@ Measures the average number of selectors in every rule. Stylesheet rules can be 
 - __aggregate__: sum
 - __format__: number
 
+<a name="identifiers-per-selector"></a>
 #### Identifiers Per Selector
 Measures the average number of identifiers in every selector. Selectors can be made more specific to combinations of elements by adding more identifiers to a selector. Fewer identifiers in a given selector reduces its dependency on certain DOM structures, allowing more changes to your HTML before being forced to change your CSS. Selectors with fewer identifiers are also more readable.
 
 - __id__: identifiers-per-selector
 - __name__: Identifiers Per Selector
 - __type__: selector
+- __aggregate__: mean
+- __format__: number
+
+<a name="declarations-per-rule"></a>
+#### Declarations Per Rule
+Measures the average number of declarations in every rule. Rules with fewer property declarations are simpler, and also makes rules easier to read in text editors and developer tools.
+
+- __id__: declarations-per-rule
+- __name__: Declarations Per Rule
+- __type__: rule
 - __aggregate__: mean
 - __format__: number
 
