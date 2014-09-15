@@ -11,7 +11,6 @@ module.exports = {
     aggregate: 'mean',
     format: 'number',
     measure: function (rule) {
-        console.log(rule);
         return (new CssRule(rule)).getDeclarations().length;
     }
 };
