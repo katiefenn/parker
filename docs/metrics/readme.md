@@ -12,6 +12,7 @@ Parker has a suite of metrics that are useful for measuring stylesheets. What fo
 		4. [Total Declarations](#total-declarations)
 		5. [Selectors Per Rule](#selectors-per-rule)
 		6. [Identifiers Per Selectors](#identifiers-per-selector)
+        7. [Declarations Per Rule](#declarations-per-rule)
 	3. [Specificity](#specificity)
 		1. [Specificity Per Selector](#specificity-per-selector)
 		2. [Top Selector Specificity](#top-selector-specificity)
@@ -125,6 +126,16 @@ Measures the average number of identifiers in every selector. Selectors can be m
 - __id__: identifiers-per-selector
 - __name__: Identifiers Per Selector
 - __type__: selector
+- __aggregate__: mean
+- __format__: number
+
+<a name="declarations-per-rule"></a>
+#### Declarations Per Rule
+Measures the average number of declarations in every rule. Rules with fewer property declarations are simpler, and also makes rules easier to read in text editors and developer tools.
+
+- __id__: declarations-per-rule
+- __name__: Declarations Per Rule
+- __type__: rule
 - __aggregate__: mean
 - __format__: number
 
