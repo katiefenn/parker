@@ -36,7 +36,7 @@ describe('The Selector Parser', function() {
     it('correctly parses attribute identifiers in a selector', function() {
         var cssSelector = new CssSelector('form[name=login-form]');
         expect(cssSelector.getIdentifiers()).to.have.length(2);
-        cssSelector = new CssSelector('a[rel][]');
+        cssSelector = new CssSelector('a[rel]');
         expect(cssSelector.getIdentifiers()).to.have.length(2);
         cssSelector = new CssSelector('a[rel~="copyright"]');
         expect(cssSelector.getIdentifiers()).to.have.length(2);
