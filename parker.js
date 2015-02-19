@@ -8,7 +8,7 @@
  * Module dependencies
  */
 
-var _ = require('underscore'),
+var _ = require('lodash'),
     Parker = require('./lib/Parker'),
     CliController = require('./lib/CliController'),
     metrics = require('./metrics/All'),
