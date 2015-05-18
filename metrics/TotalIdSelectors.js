@@ -12,6 +12,19 @@ module.exports = {
     aggregate: 'sum',
     format: 'number',
     measure: function (selector) {
-        return selector.indexOf('#') > 0 ? 1 : 0;
+		var ids = 0;
+		var inBrackets = false;
+
+		_.forOwn(selector, function (char) {
+			if (char === '[') {
+				inBrackets = true;
+			} else if (char === ']') {
+				inBrackets = false;
+			} else if (char === '#' && !inBrackets) {
+				ids++;
+			}
+		});
+
+		return ids;
     }
 };
