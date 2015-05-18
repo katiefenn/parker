@@ -36,6 +36,24 @@ curl http://www.katiefenn.co.uk/css/shuttle.css -s | parker -s
 parker example.css --format=json
 ```
 
+### Programmatic usage
+
+After installing parker as a dependency in your project, you can use it as follows:
+
+```js
+var Parker = require('parker/lib/Parker');
+var metrics = require('parker/metrics/All'); // Or an array of the metrics you want to measure
+
+var file = fs.readFile('test.css', function (err, data) {
+	if (err) throw err;
+
+	var parker = new Parker(metrics);
+	var results = parker.run(data.toString());
+
+	// Do something with results
+});
+```
+
 ## Documentation
 
 Documentation can be found in markdown format the [docs folder](https://github.com/katiefenn/parker/tree/master/docs).
