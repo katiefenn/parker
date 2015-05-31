@@ -6,7 +6,7 @@
     "stylesheet",
     "analysis"
   ],
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "parker.js",
   "dependencies": {
     "async": "~0.2.10",
