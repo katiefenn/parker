@@ -3,7 +3,7 @@
 var expect = require('chai').expect,
 	metric = require('../metrics/TotalIdSelectors.js');
 
-describe('The identifiers-per-selector metric', function () {
+describe('The total-id-selectors metric', function () {
 	it('should provide a string identifier for the metric', function() {
 		expect(metric.id).to.be.a('string');
 	});
