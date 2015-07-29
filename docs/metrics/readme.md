@@ -162,7 +162,7 @@ Displays the most specific selector. Reducing the specificity of the most comple
 
 <a name="important-keywords"></a>
 ### Important Keywords
-The !important keyword supersedes selector specificity, even allowing properties to be enforced over properties of rules with high specificity selectors. Because !important is so powerful, it should be reserved for use for architectural purposes, enforcing styles in user stylesheets and utility classes. Using !important to overcome issues with specificity exasperates the problem.
+The !important keyword supersedes selector specificity, even allowing properties to be enforced over properties of rules with high specificity selectors. Because !important is so powerful, it should be reserved for use for architectural purposes, enforcing styles in user stylesheets and utility classes. Using !important to overcome issues with specificity exacerbates the problem.
 
 <a name="total-important-keywords"></a>
 #### Total Important Keywords
