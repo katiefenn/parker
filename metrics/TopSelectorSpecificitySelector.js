@@ -3,6 +3,7 @@
 'use strict';
 
 var _ = require('lodash');
+var CssSelector = require('../lib/CssSelector')
 
 module.exports = {
     id: 'top-selector-specificity-selector',
@@ -13,8 +14,9 @@ module.exports = {
     measure: function (selector) {
         return selector;
     },
-    iterator: function (selector) {
-        var identifiers = getIdentifiers(selector),
+    iterator: function (rawSelector) {
+        var selector = new CssSelector(rawSelector),
+            identifiers = selector.getIdentifiers(),
             specificity = 0;
 
         _.each(identifiers, function (identifier) {
@@ -33,17 +35,6 @@ module.exports = {
     }
 };
 
-var getIdentifiers = function (selector) {
-    var identifiers = [],
-        segments = selector.split(/\s+[\s\+>]\s?|~^=/g);
-
-    _.each(segments, function (segment) {
-        identifiers = identifiers.concat(segment.match(/[#\.:]?[\w\-\*]+|\[[\w=\-~'"\|]+\]|:{2}[\w-]+/g));
-    });
-
-    return identifiers;
-};
-
 var getSpecificity = function (idIdentifiers, classIdentifiers, attributeIdentifiers, pseudoClassIdentifiers, typeIdentifiers, pseudoElementIdentifiers) {
     return Number(
         String(idIdentifiers) +
@@ -56,7 +47,7 @@ var countIdIdentifiers = function (identifier) {
     var regex = /#/,
         matches = regex.exec(identifier);
 
-    if (matches) {
+    if (matches && !countAttributeIdentifiers(identifier)) {
         return matches.length;
     }
 
@@ -86,7 +77,7 @@ var countAttributeIdentifiers = function (identifier) {
 };
 
 var countPseudoClassIdentifiers = function  (identifier) {
-    var regex = /:[^:]/,
+    var regex = /^:[^:]/,
         matches = regex.exec(identifier);
 
     // :not pseudo-class identifier itself is ignored
@@ -121,4 +112,12 @@ var countPseudoElementIdentifiers = function (identifier) {
     }
 
     return 0;
+};
+
+var stripNotIdentifier = function (identifier) {
+    if (identifier.match(/:not/)) {
+        return identifier.replace(/:not\(|\)/g, '');
+    }
+
+    return identifier;
 };
