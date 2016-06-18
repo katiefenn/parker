@@ -4,11 +4,11 @@
 
 var _ = require('lodash');
 var CssSelector = require('../lib/CssSelector');
-var getSpecificity = require('../lib/ClassicalSelectorSpecificity');
+var getSpecificity = require('../lib/PreciseSelectorSpecificity');
 
 module.exports = {
-    id: 'specificity-per-selector',
-    name: 'Specificity Per Selector (Classical)',
+    id: 'precise-specificity-per-selector',
+    name: 'Specificity Per Selector (Precise)',
     type: 'selector',
     aggregate: 'mean',
     format: 'number',

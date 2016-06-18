@@ -19,7 +19,10 @@ module.exports = [
 
     // Specificity
     require('./SpecificityPerSelector.js'),
+    require('./PreciseSpecificityPerSelector.js'),
     require('./TopSelectorSpecificity.js'),
+    require('./PreciseTopSelectorSpecificity.js'),
+    require('./StringTopSelectorSpecificity.js'),
     require('./TopSelectorSpecificitySelector.js'),
     require('./TotalIdSelectors.js'),
 
