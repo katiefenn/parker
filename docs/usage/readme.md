@@ -13,7 +13,7 @@ Measuring all local stylesheets in a directory:
 
 Measuring a remote stylesheet using curl:
 
-	curl http://www.katiefenn.co.uk/css/shuttle.css -s | parker
+	curl http://www.katiefenn.co.uk/css/shuttle.css | parker -s
 
 <a name="options"></a>
 ## Options
