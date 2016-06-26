@@ -27,14 +27,7 @@ cliController.on('runPaths', function (filePaths) {
         var onFileLoad = function (err, data) {
             stylesheets.push(data);
         };
-
-        if (!fileIsStylesheet(filePath)) {
-            readDirectory(filePath, onFileLoad, onAllLoad);
-        }
-        else {
-            readFile(filePath, function (err, data) { onFileLoad(err, data); onAllLoad();});
-        }
-
+        read(filePath, onFileLoad, onAllLoad);
     }, function (err) {
         runReport(stylesheets, metrics);
     });
@@ -80,17 +73,24 @@ cliController.on('showNumericOnly', function () {
     });
 });
 
+var read = function (filePath, onFileLoad, onAllLoad) {
+    if (fs.lstatSync(filePath).isDirectory()) {
+        readDirectory(filePath, onFileLoad, onAllLoad);
+    }
+    else if (fileIsStylesheet(filePath)) {
+        readFile(filePath, function (err, data) {
+            onFileLoad(err, data);
+            onAllLoad();
+        });
+    } else {
+        onAllLoad();
+    }
+}
+
 var readDirectory = function (directoryPath, onFileLoad, onAllLoad) {
     fs.readdir(directoryPath, function (err, files) {
         async.each(files, function (file, fileDone) {
-            if (!fileIsStylesheet(file)) {
-                return fileDone();
-            }
-
-            readFile(path.join(directoryPath, file), function(err, fileData) {
-                onFileLoad(err, fileData);
-                fileDone();
-            });
+            read(path.join(directoryPath, file), onFileLoad, fileDone);
         }, onAllLoad);
     });
 };
