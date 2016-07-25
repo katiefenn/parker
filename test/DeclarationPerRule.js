@@ -18,19 +18,19 @@ describe('The declarations-per-rule metric', function () {
         expect(metric.measure('')).to.equal(0);
     });
 
-    it('should return 1 for the selector "body { color: 1 }"', function() {
+    it('should return 1 for the selector "body { color: #222 }"', function() {
         expect(metric.measure('body { color: 1 }')).to.equal(1);
     });
 
-    it('should return 2 for the selector "body { color: 1; backgrund: #333; }"', function() {
-        expect(metric.measure('body { color: 1; backgrund: #333; }')).to.equal(2);
+    it('should return 2 for the selector "body { color: #222; backgrund: #333; }"', function() {
+        expect(metric.measure('body { color: #222; backgrund: #333; }')).to.equal(2);
     });
 
-    it('should return 3 for the selector "body { color: 1; backgrund: #333; margin: 0; }"', function() {
-        expect(metric.measure('body { color: 1; backgrund: #333; margin: 0; }')).to.equal(3);
+    it('should return 3 for the selector "body { color: #222; backgrund: #333; margin: 0; }"', function() {
+        expect(metric.measure('body { color: #222; backgrund: #333; margin: 0; }')).to.equal(3);
     });
 
-    it('should return 4 for the selector "body { color: 1; backgrund: #333; margin: 0; padding: 0; }"', function() {
-        expect(metric.measure('body { color: 1; backgrund: #333; margin: 0; padding: 0; }')).to.equal(4);
+    it('should return 4 for the selector "body { color: #222; backgrund: #333; margin: 0; padding: 0; }"', function() {
+        expect(metric.measure('body { color: #222; backgrund: #333; margin: 0; padding: 0; }')).to.equal(4);
     });
 });
