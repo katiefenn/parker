@@ -7,7 +7,7 @@ var CssSelector = require('../lib/CssSelector');
 
 module.exports = {
     id: 'top-selector-specificity',
-    name: 'Top Selector Specificity',
+    name: 'Top Selector Specificity (Classical)',
     type: 'selector',
     aggregate: 'max',
     format: 'number',
