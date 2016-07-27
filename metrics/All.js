@@ -32,5 +32,8 @@ module.exports = [
 
     // Media Queries
     require('./TotalMediaQueries.js'),
-    require('./MediaQueries.js')
+    require('./MediaQueries.js'),
+
+    // Z-Index
+    require('./ZIndexes.js')
 ];
