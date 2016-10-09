@@ -35,7 +35,7 @@ describe('The identifiers-per-selector metric', function () {
 
     it('should return 5 for the selector "body section.articles>article:first-child"', function() {
         expect(metric.measure('body section.articles>article:first-child')).to.equal(5);
-    })
+    });
 
     it('should return 7 for the selector "body section.articles>article:first-child p::first-line', function() {
         expect(metric.measure('body section.articles>article:first-child p::first-line')).to.equal(7);

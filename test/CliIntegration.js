@@ -1,6 +1,6 @@
 /*! Parker v0.1.0 - MIT license */
 
-var expect = require('chai').expect
+var expect = require('chai').expect,
     exec = require('child_process').exec;
 
 describe('The Parker CLI tool', function () {
@@ -41,7 +41,6 @@ describe('The Parker CLI tool', function () {
         exec('node parker.js test/fixtures/specificity-warning.css --format="warnings"', function (err, stdout, stderr) {
             expect(stdout).to.contain('Failure: Top Selector Specificity: 900');
             expect(stdout).to.contain('Failure: Specificity Per Selector: 900');
-            expect(stdout).to.contain('Failure: Top Selector Specificity: 900');
             done();
         });
     });
@@ -57,7 +56,7 @@ describe('The Parker CLI tool', function () {
         }
     );
 
-    it('should reduce the threashold at which warnings are reported when invoked with a --warning-figures="strict" switch', function (done) {
+    it('should reduce the threshold at which warnings are reported when invoked with a --warning-figures="strict" switch', function (done) {
         exec('node parker.js test/fixtures/one-id-selector.css --format="warnings"', function (defaultErr, defaultStdout, defaultStderr) {
             exec('node parker.js test/fixtures/one-id-selector.css --format="warnings" --warning-figures="strict"', function (strictErr, strictStdout, strictStderr) {
                 expect(defaultStdout).to.not.contain('Failure: Top Selector Specificity');
