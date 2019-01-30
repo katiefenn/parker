@@ -313,17 +313,17 @@ Example:
 The Total Media Queries returns the query to be collected into a list. Before reporting, the filter method is run on the list, removing duplicate queries by returning a true or false value according to whether it is the only such item in the list. The length aggregate returns the number of queries collected after filtering.
 
 	module.exports = {
-    	id: 'total-media-queries',
-	    name: 'Total Media Queries',
-    	type: 'mediaquery',
-	    aggregate: 'length',
-    	format: 'number',
-	    measure: function (query) {
-    	    return query;
-	    },
-    	filter: function (value, index, list) {
-	        return self.indexOf(value) === index;
-    	}
+		id: 'total-media-queries',
+		name: 'Total Media Queries',
+		type: 'mediaquery',
+		aggregate: 'length',
+		format: 'number',
+		measure: function (query) {
+			return query;
+		},
+		filter: function (value, index, list) {
+			return self.indexOf(value) === index;
+		}
 	};
 
 <a name="iterator"></a>
@@ -335,25 +335,25 @@ Example:
 The Top Selector Specificity Selector metric returns the most specific selector, but does not report a number value. An iterator method is used to determine the selector's specificity when results are aggregated.
 
 	module.exports = {
-    	id: 'top-selector-specificity-selector',
-	    name: 'Top Selector Specificity Selector',
-    	type: 'selector',
-	    aggregate: 'max',
-    	format: 'string',
-	    measure: function (selector) {
-    	    return selector;
-	    },
-    	iterator: function (selector) {
-	        var identifiers = getIdentifiers(selector),
-    	        specificity = 0;
-	
+		id: 'top-selector-specificity-selector',
+		name: 'Top Selector Specificity Selector',
+		type: 'selector',
+		aggregate: 'max',
+		format: 'string',
+		measure: function (selector) {
+			return selector;
+		},
+		iterator: function (selector) {
+			var identifiers = getIdentifiers(selector),
+			specificity = 0;
+		
 			/*
-				Implementation calculating specificity cut for brevity
-				...			
+			Implementation calculating specificity cut for brevity
+			...			
 			*/
-	
-    	    return specificity;
-	    }
+		
+			return specificity;
+		}
 	};
 
 
